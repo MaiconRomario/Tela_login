@@ -37,17 +37,20 @@
                     </ul>
                 </div>
                 <p class="description description-second">ou use seu e-mail para se cadastrar:</p>
-                <form class="form">
+                <form class='form '>
 
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Nome">
+                        <input class="nome validar" type="text" placeholder="Nome">
                     </label>
 
-                    <label class="label-input" for="">
+                    <label class="label-input" for="cpf">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="CPF">
+                        <input id="cpf" type="text" name="cpf" placeholder="CPF" autocomplete="off" maxlength="14" onkeyup="mascara_cpf()"> 
+                        <p class="cpf-error" id="cpf-error" style="color: red; display: none;">CPF inválido.</p>
                     </label>
+
+
 
                     
                     <label class="label-input" for="">
@@ -57,17 +60,12 @@
                     
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Senha">
+                        <input class="senha validar" type="password" placeholder="Senha">
                     </label>
 
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Confirme Senha">
-                    </label>
-
-                    <label class="label-input-date" for="">
-                        <i class="icon-modify"></i> <input  type="text"  placeholder="Data nascimento " onblur="this.type='text'" onfocus="this.type='date'"onblur="this.type='text'">
-                       
+                        <input class="repetir-senha validar" type="password" placeholder="Confirme Senha">
                     </label>
 
                     <button class="btn btn-second">inscrever-se</button>        
@@ -119,5 +117,6 @@
         </div>
     </div>
     <script src="js/app.js"></script>
+    <script src="js/validateCpf.js"></script>
 </body>
 </html>

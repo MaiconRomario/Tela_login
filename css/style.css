@@ -65,6 +65,7 @@ body {
 .description-second {
     color: #7f8c8d;
 }
+
 .btn {
     border-radius: 15px;
     text-transform: uppercase;
@@ -172,6 +173,11 @@ input:-webkit-autofill
 }
 .label-input-date {
     width: 45%;
+}
+
+.cpf-error {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
 }
 
 
