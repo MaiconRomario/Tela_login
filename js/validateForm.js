@@ -2,8 +2,8 @@ const cpfError = document.getElementById("cpf-error");
 const invalidCPFMessage = "CPF inválido.";
 const invalidLengthCPFMessage = "O CPF deve ter 11 dígitos.";
 
-function validateCPF() {
-  const cpf = document.getElementById("cpf").value.replace(/[^\d]+/g,'');
+function validateCPF(cpf) {
+  cpf = cpf.replace(/[^\d]+/g,'');
 
   if (cpf.length !== 11) {
     cpfError.style.display = "block";
@@ -45,6 +45,15 @@ function validateCPF() {
   return true;
 }
 
+function validatePassword(password, confirmPassword) {
+  // Verifica se as senhas são iguais
+  if (password !== confirmPassword) {
+    alert('As senhas não coincidem!');
+    return false;
+  }
+  return true;
+}
+
 // Adiciona os eventos "input" e "keypress" no input de CPF
 const inputCPF = document.getElementById("cpf");
 inputCPF.addEventListener("input", mascara_cpf);
@@ -55,15 +64,32 @@ inputCPF.addEventListener("keypress", function(e) {
   }
 });
 
-// Adiciona o evento "submit" no formulário
-const form = document.getElementById("my-form");
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-  if (validateCPF()) {
-    alert("CPF válido! Enviando formulário...");
-    // Aqui você pode adicionar a lógica para enviar o formulário
+const form = document.getElementById('my-form');
+
+form.addEventListener('submit', (event) => {
+  // Impede o envio padrão do formulário
+  event.preventDefault();
+
+  const password = document.getElementById('pass').value;
+  const confirmPassword = document.getElementById('confirm_password').value;
+  const cpf = document.getElementById("cpf").value;
+
+  // Verifica se o CPF é válido
+  if (!validateCPF(cpf)) {
+    alert('CPF inválido!');
+    return;
   }
+
+  // Verifica se as senhas são iguais
+  if (!validatePassword(password, confirmPassword)) {
+    return;
+  }
+
+  alert('Formulário enviado!');
+  form.submit();
 });
+
+
 
 function mascara_cpf() {
   var cpf = document.getElementById('cpf')
